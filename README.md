@@ -39,7 +39,7 @@ testExportEndpoint();
 
 ### UML Sequence Diagram
 
-![UML Sequence Diagram](path/to/your/uml-diagram.png)
+![UML Sequence Diagram](assets/uml-diagram.png)
 
 1. **Client** sends a GET request to `/export` with the `email` query parameter.
 2. **Microservice** fetches data from the Supabase API.
