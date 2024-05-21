@@ -52,11 +52,17 @@ testExportEndpoint();
 1. **Install Dependencies:**
 npm install
 
-2. **Start the Microservice:**
+2. **Create and Configure the `.env` File:**
+   Create a `.env` file in the root of your project. You will need to add the following variables:
+   - `SUPABASE_API_URL`: The URL of your Supabase API.
+   - `SUPABASE_API_KEY`: The API key of your Supabase API.
+   - `SUPABASE_AUTH_TOKEN`: The auth token of your Supabase API.
+
+3. **Start the Microservice:**
 npx ts-node src/index.ts
 
 
-3. **Run the Test Script:**
+4. **Run the Test Script:**
 npx ts-node src/test.ts
 
 

@@ -3,6 +3,10 @@ import axios from 'axios';
 import { createObjectCsvWriter } from 'csv-writer';
 import fs from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -15,10 +19,10 @@ app.get('/export', async (req, res) => {
     }
 
     // Construct the API URL with the provided email
-    const apiUrl = `https://rleiwozkpxmcixddttwa.supabase.co/rest/v1/expenses?split_by=cs.{"${encodeURIComponent(email)}"}&select=*&order=expense_id.asc`;
+    const apiUrl = `${process.env.SUPABASE_API_URL}?split_by=cs.{"${encodeURIComponent(email)}"}&select=*&order=expense_id.asc`;
     const headers = {
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsZWl3b3prcHhtY2l4ZGR0dHdhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM3NTgyMzYsImV4cCI6MjAyOTMzNDIzNn0.A9mnK_A4MVIDBLMD3vNf_yIZKQ4pNJKZziXt9hT6zHU',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsZWl3b3prcHhtY2l4ZGR0dHdhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM3NTgyMzYsImV4cCI6MjAyOTMzNDIzNn0.A9mnK_A4MVIDBLMD3vNf_yIZKQ4pNJKZziXt9hT6zHU'
+        'apikey': process.env.SUPABASE_API_KEY,
+        'Authorization': process.env.SUPABASE_AUTH_TOKEN
     };
 
     try {
