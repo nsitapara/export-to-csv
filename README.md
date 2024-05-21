@@ -15,6 +15,7 @@ curl "http://localhost:3000/export?email=nsitapara@gmail.com"
 The microservice responds with a downloadable CSV file containing the requested data. The file is named `expenses.csv`.
 
 **Example Response Handling:**
+```
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
@@ -34,7 +35,7 @@ async function testExportEndpoint() {
 }
 
 testExportEndpoint();
-
+```
 
 ### UML Sequence Diagram
 
