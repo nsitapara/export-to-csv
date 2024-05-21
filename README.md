@@ -15,22 +15,24 @@ curl "http://localhost:3000/export?email=nsitapara@gmail.com"
 The microservice responds with a downloadable CSV file containing the requested data. The file is named `expenses.csv`.
 
 **Example Response Handling:**
-typescript
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
+
 async function testExportEndpoint() {
-const email = 'nsitapara@gmail.com';
-const url = http://localhost:3000/export?email=${encodeURIComponent(email)};
-try {
-const response = await axios.get(url, { responseType: 'blob' });
-const filePath = path.resolve('downloaded_expenses.csv');
-fs.writeFileSync(filePath, response.data);
-console.log(File saved to ${filePath});
-} catch (error) {
-console.error('Error calling export endpoint:', error.message);
+    const email = 'nsitapara@gmail.com';
+    const url = `http://localhost:3000/export?email=${encodeURIComponent(email)}`;
+
+    try {
+        const response = await axios.get(url, { responseType: 'blob' });
+        const filePath = path.resolve('downloaded_expenses.csv');
+        fs.writeFileSync(filePath, response.data);
+        console.log(`File saved to ${filePath}`);
+    } catch (error) {
+        console.error('Error calling export endpoint:', error.message);
+    }
 }
-}
+
 testExportEndpoint();
 
 
